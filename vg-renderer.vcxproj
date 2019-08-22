@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{4D3BA062-3D8B-4424-BE29-4C35310B461D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>BX_CONFIG_CRT_DIRECTORY_READER=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>BX_CONFIG_CRT_DIRECTORY_READER=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BX_CONFIG_CRT_DIRECTORY_READER=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>BX_CONFIG_CRT_DIRECTORY_READER=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\gpu\bgfx\src\amalgamated.cpp" />
+    <ClCompile Include="src\libs\fontstash.cpp" />
+    <ClCompile Include="src\libs\stb_truetype.cpp" />
+    <ClCompile Include="src\libtess2\bucketalloc.c" />
+    <ClCompile Include="src\libtess2\dict.c" />
+    <ClCompile Include="src\libtess2\geom.c" />
+    <ClCompile Include="src\libtess2\mesh.c" />
+    <ClCompile Include="src\libtess2\priorityq.c" />
+    <ClCompile Include="src\libtess2\sweep.c" />
+    <ClCompile Include="src\libtess2\tess.c" />
+    <ClCompile Include="src\path.cpp" />
+    <ClCompile Include="src\stroker.cpp" />
+    <ClCompile Include="src\vg.cpp" />
+    <ClCompile Include="src\vg_util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\vg\helpers\vgpp.h" />
+    <ClInclude Include="include\vg\path.h" />
+    <ClInclude Include="include\vg\stroker.h" />
+    <ClInclude Include="include\vg\vg.h" />
+    <ClInclude Include="src\libs\fontstash.h" />
+    <ClInclude Include="src\libs\stb_truetype.h" />
+    <ClInclude Include="src\libtess2\bucketalloc.h" />
+    <ClInclude Include="src\libtess2\dict.h" />
+    <ClInclude Include="src\libtess2\geom.h" />
+    <ClInclude Include="src\libtess2\mesh.h" />
+    <ClInclude Include="src\libtess2\priorityq.h" />
+    <ClInclude Include="src\libtess2\sweep.h" />
+    <ClInclude Include="src\libtess2\tess.h" />
+    <ClInclude Include="src\libtess2\tesselator.h" />
+    <ClInclude Include="src\shaders\fs_color_gradient.bin.h" />
+    <ClInclude Include="src\shaders\fs_image_pattern.bin.h" />
+    <ClInclude Include="src\shaders\fs_stencil.bin.h" />
+    <ClInclude Include="src\shaders\fs_textured.bin.h" />
+    <ClInclude Include="src\shaders\vs_color_gradient.bin.h" />
+    <ClInclude Include="src\shaders\vs_image_pattern.bin.h" />
+    <ClInclude Include="src\shaders\vs_stencil.bin.h" />
+    <ClInclude Include="src\shaders\vs_textured.bin.h" />
+    <ClInclude Include="src\vg_util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\vg\inline\vg.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\gpu\bgfx\.build\win64_vs2017\bin\bimgRelease.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
