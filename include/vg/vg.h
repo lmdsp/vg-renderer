@@ -20,11 +20,6 @@
 #	define VG_CONFIG_FORCE_AA_OFF 0
 #endif
 
-// TODO: Doesn't work without libtess2!
-#ifndef VG_CONFIG_USE_LIBTESS2
-#	define VG_CONFIG_USE_LIBTESS2 1
-#endif
-
 #ifndef VG_CONFIG_LIBTESS2_SCRATCH_BUFFER
 #	define VG_CONFIG_LIBTESS2_SCRATCH_BUFFER (4 * 1024 * 1024) // Set to 0 to let libtess2 use malloc/free
 #endif
@@ -219,21 +214,35 @@ struct PathType
 	};
 };
 
-#define VG_FILL_FLAGS(type, aa) (((aa) << 4) | (type))
+struct FillRule
+{
+	enum Enum : uint32_t
+	{
+		NonZero = 0,
+		EvenOdd = 1,
+	};
+};
+
+#define VG_FILL_FLAGS(type, rule, aa) ((((rule) << 4) | (aa) << 2) | (type))
 #define VG_FILL_FLAGS_PATH_TYPE(flags) (PathType::Enum)((flags) & 0x01)
-#define VG_FILL_FLAGS_AA(flags) (((flags) & 0x10) != 0)
+#define VG_FILL_FLAGS_AA(flags) (((flags) & 0x04) != 0)
+#define VG_FILL_FLAGS_RULE(flags) (FillRule::Enum)(((flags) & 0x10) >> 4)
 
 struct FillFlags
 {
 	enum Enum : uint32_t
 	{
-		// w/o AA
-		Convex  = VG_FILL_FLAGS(PathType::Convex, 0),
-		Concave = VG_FILL_FLAGS(PathType::Concave, 0),
+		Convex  = VG_FILL_FLAGS(PathType::Convex, FillRule::NonZero, 0),
+		ConvexAA = VG_FILL_FLAGS(PathType::Convex, FillRule::NonZero, 1),
 
-		// w/ AA
-		ConvexAA  = VG_FILL_FLAGS(PathType::Convex, 1),
-		ConcaveAA = VG_FILL_FLAGS(PathType::Concave, 1),
+		ConcaveNonZero = VG_FILL_FLAGS(PathType::Concave, FillRule::NonZero, 0),
+		ConcaveEvenOdd = VG_FILL_FLAGS(PathType::Concave, FillRule::EvenOdd, 0),
+		ConcaveNonZeroAA = VG_FILL_FLAGS(PathType::Concave, FillRule::NonZero, 1),
+		ConcaveEvenOddAA = VG_FILL_FLAGS(PathType::Concave, FillRule::EvenOdd, 1),
+
+		// These are kept for backwards compatibility
+		Concave = ConcaveNonZero,
+		ConcaveAA = ConcaveNonZeroAA,
 	};
 };
 
@@ -279,6 +288,15 @@ struct ClipRule
 	};
 };
 
+struct TransformOrder
+{
+	enum Enum : uint32_t
+	{
+		Pre = 0,
+		Post = 1,
+	};
+};
+
 #if VG_CONFIG_UV_INT16
 typedef int16_t uv_t;
 #else
@@ -308,6 +326,12 @@ struct ContextConfig
 	uint32_t m_MaxVBVertices;       // default: 65536
 	uint32_t m_FontAtlasImageFlags; // default: ImageFlags::Filter_Bilinear
 	uint32_t m_MaxCommandListDepth; // default: 16
+};
+
+struct Stats
+{
+	uint32_t m_CmdListMemoryTotal;
+	uint32_t m_CmdListMemoryUsed;
 };
 
 struct TextConfig
@@ -365,11 +389,14 @@ struct FontFlags
 struct Context;
 
 // Context
-Context* createContext(uint16_t viewID, bx::AllocatorI* allocator, const ContextConfig* cfg = nullptr);
+Context* createContext(bx::AllocatorI* allocator, const ContextConfig* cfg = nullptr);
 void destroyContext(Context* ctx);
 
-void beginFrame(Context* ctx, uint16_t canvasWidth, uint16_t canvasHeight, float devicePixelRatio);
-void endFrame(Context* ctx);
+void begin(Context* ctx, uint16_t viewID, uint16_t canvasWidth, uint16_t canvasHeight, float devicePixelRatio);
+void end(Context* ctx);
+void frame(Context* ctx);
+const Stats* getStats(Context* ctx);
+
 void beginPath(Context* ctx);
 void moveTo(Context* ctx, float x, float y);
 void lineTo(Context* ctx, float x, float y);
@@ -409,7 +436,7 @@ void transformIdentity(Context* ctx);
 void transformScale(Context* ctx, float x, float y);
 void transformTranslate(Context* ctx, float x, float y);
 void transformRotate(Context* ctx, float ang_rad);
-void transformMult(Context* ctx, const float* mtx, bool pre);
+void transformMult(Context* ctx, const float* mtx, TransformOrder::Enum order);
 void setViewBox(Context* ctx, float x, float y, float w, float h);
 
 void getTransform(Context* ctx, float* mtx);
@@ -494,7 +521,7 @@ void clTransformIdentity(Context* ctx, CommandListHandle handle);
 void clTransformScale(Context* ctx, CommandListHandle handle, float x, float y);
 void clTransformTranslate(Context* ctx, CommandListHandle handle, float x, float y);
 void clTransformRotate(Context* ctx, CommandListHandle handle, float ang_rad);
-void clTransformMult(Context* ctx, CommandListHandle handle, const float* mtx, bool pre);
+void clTransformMult(Context* ctx, CommandListHandle handle, const float* mtx, TransformOrder::Enum order);
 void clSetViewBox(Context* ctx, CommandListHandle handle, float x, float y, float w, float h);
 
 void clText(Context* ctx, CommandListHandle handle, const TextConfig& cfg, float x, float y, const char* str, const char* end);
@@ -560,7 +587,7 @@ void clTransformIdentity(CommandListRef& ref);
 void clTransformScale(CommandListRef& ref, float x, float y);
 void clTransformTranslate(CommandListRef& ref, float x, float y);
 void clTransformRotate(CommandListRef& ref, float ang_rad);
-void clTransformMult(CommandListRef& ref, const float* mtx, bool pre);
+void clTransformMult(CommandListRef& ref, const float* mtx, TransformOrder::Enum order);
 void clText(CommandListRef& ref, const TextConfig& cfg, float x, float y, const char* str, const char* end);
 void clTextBox(CommandListRef& ref, const TextConfig& cfg, float x, float y, float breakWidth, const char* str, const char* end, uint32_t textboxFlags);
 void clSubmitCommandList(CommandListRef& ref, CommandListHandle child);
