@@ -22,25 +22,26 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{4D3BA062-3D8B-4424-BE29-4C35310B461D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
@@ -75,7 +76,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;bgfx/include;bx/include;bx/include/compat/msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -89,7 +90,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;bgfx/include;bx/include;bx/include/compat/msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -101,13 +102,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;bgfx/include;bx/include;bx/include/compat/msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BX_CONFIG_CRT_DIRECTORY_READER=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;bgfx/include;bx/include;bx/include/compat/msvc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BX_CONFIG_CRT_DIRECTORY_READER=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
