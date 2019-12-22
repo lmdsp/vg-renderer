@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
-    <Filter Include="Source Files\bgfx">
-      <UniqueIdentifier>{9dfc78b1-40de-43d5-aae1-c19e917e48cc}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\path.cpp">
@@ -56,9 +53,6 @@
     </ClCompile>
     <ClCompile Include="src\libtess2\tess.c">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\bgfx\src\amalgamated.cpp">
-      <Filter>Source Files\bgfx</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -136,8 +130,5 @@
     <None Include="include\vg\inline\vg.inl">
       <Filter>Header Files</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\gpu\bgfx\.build\win64_vs2017\bin\bimgRelease.lib" />
   </ItemGroup>
 </Project>

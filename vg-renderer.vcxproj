@@ -75,7 +75,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>include;../bimg/include;../bgfx/3rdparty/khronos;../bgfx/3rdparty/dxsdk/include;../bx/3rdparty;../bimg/3rdparty/astc-codec;../bimg/3rdparty/astc-codec/include;../bimg/3rdparty/iqa/include;../bimg/3rdparty;../bgfx/3rdparty;../bgfx/include;../bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -89,7 +89,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>include;../bimg/include;../bgfx/3rdparty/khronos;../bgfx/3rdparty/dxsdk/include;../bx/3rdparty;../bimg/3rdparty/astc-codec;../bimg/3rdparty/astc-codec/include;../bimg/3rdparty/iqa/include;../bimg/3rdparty;../bgfx/3rdparty;../bgfx/include;../bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -101,18 +101,17 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>include;../bimg/include;../bgfx/3rdparty/khronos;../bgfx/3rdparty/dxsdk/include;../bx/3rdparty;../bimg/3rdparty/astc-codec;../bimg/3rdparty/astc-codec/include;../bimg/3rdparty/iqa/include;../bimg/3rdparty;../bgfx/3rdparty;../bgfx/include;../bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BX_CONFIG_CRT_DIRECTORY_READER=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>include;../bimg/include;../bgfx/3rdparty/khronos;../bgfx/3rdparty/dxsdk/include;../bx/3rdparty;../bimg/3rdparty/astc-codec;../bimg/3rdparty/astc-codec/include;../bimg/3rdparty/iqa/include;../bimg/3rdparty;../bgfx/3rdparty;../bgfx/include;../bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>include;../gpu/bimg/include;../gpu/bgfx/3rdparty/khronos;../gpu/bgfx/3rdparty/dxsdk/include;../gpu/bx/3rdparty;../gpu/bimg/3rdparty/astc-codec;../gpu/bimg/3rdparty/astc-codec/include;../gpu/bimg/3rdparty/iqa/include;../gpu/bimg/3rdparty;../gpu/bgfx/3rdparty;../gpu/bgfx/include;../../gpu/bx/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>BX_CONFIG_CRT_DIRECTORY_READER=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\bgfx\src\amalgamated.cpp" />
     <ClCompile Include="src\libs\fontstash.cpp" />
     <ClCompile Include="src\libs\stb_truetype.cpp" />
     <ClCompile Include="src\libtess2\bucketalloc.c" />
@@ -154,9 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="include\vg\inline\vg.inl" />
-  </ItemGroup>
-  <ItemGroup>
-    <Library Include="..\gpu\bgfx\.build\win64_vs2017\bin\bimgRelease.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
