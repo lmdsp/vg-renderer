@@ -57,7 +57,7 @@
     <ClCompile Include="src\libtess2\tess.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\gpu\bgfx\src\amalgamated.cpp">
+    <ClCompile Include="..\bgfx\src\amalgamated.cpp">
       <Filter>Source Files\bgfx</Filter>
     </ClCompile>
   </ItemGroup>
